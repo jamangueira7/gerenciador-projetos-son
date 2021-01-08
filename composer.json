@@ -1,0 +1,16 @@
+{
+    "name": "mangueira/gerenciador-projetos-son",
+    "description": "Gerenciador de projetos com PHP, curso da School of Net.",
+    "authors": [
+        {
+            "name": "João Mangueira",
+            "email": "jamjs7@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "SON\\Framework\\": "src"
+        }
+    }
+}
