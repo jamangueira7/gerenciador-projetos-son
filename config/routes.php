@@ -7,7 +7,5 @@ $router->add('GET','/', function () {
 });
 
 $router->add('GET','/projects/(\d+)', function ($params) use ($container) {
-    $user = new Users($container);
-    $data = $user->get($params[1]);
-    return 'Meu nome é  ' . $data['name'];
+
 });
