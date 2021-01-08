@@ -2,9 +2,11 @@
 
 namespace App\Controllers;
 
+use App\Models\Users;
+
 class UserController
 {
-    public function show($id)
+    public function show($container, $params)
     {
         $user = new Users($container);
         $data = $user->get($params[1]);

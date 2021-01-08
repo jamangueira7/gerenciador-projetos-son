@@ -11,7 +11,12 @@ try {
     $result = $router->run();
     $response = new SON\Framework\Response;
 
-    $response($result['action'], $result['params']);
+    $params = [
+      'container' => $container,
+      'params' => $result['params'],
+
+    ];
+    $response($result['action'], $params);
 } catch (\SON\Framework\Exceptions\HttpException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
