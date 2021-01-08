@@ -7,7 +7,9 @@
             "email": "jamjs7@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "pimple/pimple": "^3.3"
+    },
     "autoload": {
         "psr-4": {
             "SON\\Framework\\": "src",
