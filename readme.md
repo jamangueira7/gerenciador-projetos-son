@@ -1,39 +1,48 @@
-<p align="center">Jogo da velha</p>
+<p align="center">
+  <img alt="animation" src=".github/imagem1.PNG" width="100%">
+</p>
 
-## Pre requisitos
+<p align="center">
+  <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; 
+  <a href="#-como-rodar">Como rodar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;
+ </p>
 
-Ferramentas usada para fazer o projeto:
+<br>
 
-- PHP 7.2
-- Composer version 1.8.4
-- MySql 5.7
-- Apache 2.4.35
--Git 2.14.1
+# Gerenciador de projetos com PHP
 
-## Como executar o projeto
+## 🚀 Tecnologias
 
-Para executar o projeto siga os comandos abaixo:
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- **Clone o projeto.**
-- **Entrar nas pasta "Docker".**
-- **Execute o comando "docker-compose up -d --build".**
-- **Execute o comando "docker ps". Esse comando vai te mostrar a lista de container executando.**
-- **Execute o comando "docker exec -it NOMECONTAINER bash". NOMECONTAINER é pego no comando anterior na coluna "NAMES".**
-- **Apos entrar no container do apache execute o comando "composer install" para instalar as dependencias do projeto.**
-- **Preencha os seus dados de conexão.**
+- [PHP](https://www.php.net/) - 7.2
+- [Composer](https://getcomposer.org/) - v1.8.4
+- [Postgres](https://www.postgresql.org/) - 10.15-alpine
+- [CSS3](https://developer.mozilla.org/pt-BR/docs/Web/CSS)
+- [HTML5](https://developer.mozilla.org/pt-BR/docs/Web/HTML/HTML5)
+- [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+- [Docker](https://www.docker.com/) - 19.03.8
+- [Apache](https://www.apache.org/) 2.4.35
 
-        DB_CONNECTION=mysqldb_jv
-        DB_HOST=127.0.0.1
-        DB_PORT=3306
-        DB_DATABASE=jogo
-        DB_USERNAME=root
-        DB_PASSWORD=root
+## 💻 Projeto
 
-- **Rode o comando para criar o banco e os dados nele "php artisan migrate:fresh --seed".**
-- **Acesse o projeto pela URL http://127.0.0.1:8001.**
-- **Caso apareça um erro de chave execute o comando "php artisan key:generate" dentro do container.**
+Projeto de um gerenciador de projetos com PHP.
 
-- **User criado é o joao@joao.com com senha 123456.**
+Esse é um projeto pratico da [School of Net](https://www.schoolofnet.com/projeto-pratico/php/linguagem-php/gerenciador-de-projetos-com-php/).
+
+
+## 🚀 Como Rodar
+
+- Clone o projeto.
+- composer install.
+- Rodar o Postgres com docker: 
+```
+docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
+```
+- Criar um banco com o nome pp_project_manager.
+- composer server.
+- acesse http://localhost:8080/
 
 
 ## Licença
