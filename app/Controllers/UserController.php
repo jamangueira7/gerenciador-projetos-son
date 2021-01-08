@@ -10,6 +10,6 @@ class UserController
     {
         $user = new Users($container);
         $data = $user->get($request->attributes->get(1));
-        return 'Meu nome é  ' . $data['name'];
+        return $data;
     }
 }

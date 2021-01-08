@@ -26,7 +26,12 @@ class Response
             $action[0] = new $action[0];
         }
 
+        $response = call_user_func_array($action, $params);
 
-        echo call_user_func_array($action, $params);
+        if (is_array($response)) {
+            $response = json_encode($response);
+        }
+
+        echo $response;
     }
 }
