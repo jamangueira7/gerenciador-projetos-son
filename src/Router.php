@@ -39,7 +39,7 @@ class Router
 
         foreach ($this->routes[$method] as $route => $action) {
             if(preg_match($route, $url, $params)) {
-                return $action($params);
+                return compact('action', 'params');
             }
         }
         throw new HttpException('Page note found', 4004);
