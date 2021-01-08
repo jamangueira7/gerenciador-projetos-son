@@ -4,6 +4,10 @@ use Pimple\Container;
 
 $container = new Container();
 
+$container['events'] = function () {
+    return new Zend\EventManager\EventManager;
+};
+
 $container['db'] = function () {
     $host = 'localhost';
     $db = 'pp_project_manager';
