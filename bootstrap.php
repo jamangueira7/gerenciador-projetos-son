@@ -1,15 +1,9 @@
 <?php
 
-require __DIR__.'/vendor/autoload.php';
+$composer = require __DIR__.'/vendor/autoload.php';
 
-require __DIR__.'/config/containers.php';
-require __DIR__.'/config/events.php';
-
-$app = new \SON\Framework\App($container);
-
-$router = $app->getRouter();
-
-require __DIR__.'/config/middlewares.php';
-require __DIR__.'/config/routes.php';
-
+$modules = [
+    __DIR__ . '/app/Module.php' => 'App\Module'
+];
+$app = new \SON\Framework\App($composer, $modules);
 $app->run();
