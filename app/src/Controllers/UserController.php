@@ -33,6 +33,7 @@ class UserController
 
     public function delete($container, $request)
     {
-        return 'delete';
+        $user = new Users($container);
+        return $user->delete($request->attributes->get(1));
     }
 }
