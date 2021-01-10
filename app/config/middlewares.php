@@ -5,7 +5,7 @@ $middlewares = [
   'after' => [],
 ];
 
-$app->addMiddleware('before', function ($c) {
+/*$app->addMiddleware('before', function ($c) {
     session_start();
 });
 
@@ -19,4 +19,4 @@ $app->addMiddleware('after', function ($c) {
 
 $app->addMiddleware('after', function ($c) {
     echo 'after 2';
-});
+});*/
