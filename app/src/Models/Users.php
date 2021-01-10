@@ -37,11 +37,14 @@ class Users
     {
         $this->events->trigger('creating.users', null, $data);
 
-        $sql = 'INSERT INTO users (name) VALUES(?)';
+        $queryBuilder = new \SON\Framework\QueryBuilder;
+        $query = $queryBuilder
+            ->inset('users', $data)
+            ->getData();
 
-        $stmt = $this->db->prepare($sql);
+        $stmt = $this->db->prepare($query->sql);
 
-        $stmt->execute(array_values($data));
+        $stmt->execute($query->bind);
 
         $result = $this->get($this->db->lastInsertId());
 
