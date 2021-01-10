@@ -114,7 +114,6 @@ class App
 
         $registry->setApp($this);
         $registry->setComposer($this->composer);
-
         foreach ($modules as $file => $module) {
             require $file;
             $registry->add(new $module);
