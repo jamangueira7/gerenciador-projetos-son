@@ -13,15 +13,14 @@ class UserController
 
     public function create($container, $request)
     {
-        return 'create';
+        $user = new Users($container);
+        return $user->create($request->request->all());
     }
 
     public function show($container, $request)
     {
         $user = new Users($container);
-        $user->create(['name' => 'João']);
-        $data = $user->get($request->attributes->get(1));
-        return $data;
+        return $user->get($request->attributes->get(1));
     }
 
     public function update($container, $request)
