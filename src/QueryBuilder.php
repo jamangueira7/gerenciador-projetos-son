@@ -36,7 +36,17 @@ class QueryBuilder
 
     public function update(string$table, array $data)
     {
-        $this->sql = "UPDATE {$table} SET name=?";
+        $sql = "UPDATE {$table} SET %s";
+
+        $columns = array_keys($data);
+
+        foreach ($columns as &$column) {
+            $column = $column . '=?';
+        }
+
+        $this->bind = array_values($data);
+
+        $this->sql = sprintf($sql, implode(', ', $columns));
 
         return $this;
     }
