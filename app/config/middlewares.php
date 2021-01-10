@@ -5,14 +5,15 @@ $middlewares = [
   'after' => [],
 ];
 
-/*$app->addMiddleware('before', function ($c) {
+$app->addMiddleware('before', function ($c) {
     session_start();
 });
 
 $app->addMiddleware('before', function ($c) {
-    header('Content-Type: text/plain');
+    header('Content-Type: application/json');
 });
 
+/*
 $app->addMiddleware('after', function ($c) {
     echo 'after';
 });

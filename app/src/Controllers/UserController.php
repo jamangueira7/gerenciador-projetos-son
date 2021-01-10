@@ -8,7 +8,8 @@ class UserController
 {
     public function index($container, $request)
     {
-        return 'index';
+        $user = new Users($container);
+        return $user->all();
     }
 
     public function create($container, $request)
