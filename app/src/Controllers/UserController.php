@@ -21,19 +21,22 @@ class UserController
     public function show($container, $request)
     {
         $user = new Users($container);
-        return $user->get($request->attributes->get(1));
+        $conditions = ['id' => $request->attributes->get(1)];
+        return $user->get($conditions);
     }
 
 
     public function update($container, $request)
     {
         $user = new Users($container);
-        return $user->update($request->attributes->get(1), $request->request->all());
+        $conditions = ['id' => $request->attributes->get(1)];
+        return $user->update($conditions, $request->request->all());
     }
 
     public function delete($container, $request)
     {
         $user = new Users($container);
-        return $user->delete($request->attributes->get(1));
+        $conditions = ['id' => $request->attributes->get(1)];
+        return $user->delete($conditions);
     }
 }
