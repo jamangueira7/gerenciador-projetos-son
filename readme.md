@@ -44,6 +44,11 @@ docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 - composer server.
 - acesse http://localhost:8080/
 
+User o comando para criar ou recriar o banco.
+```
+php database.php fresh
+```
+
 
 ## Licença
 
