@@ -4,7 +4,7 @@
 -- -----------------------------------------------------
 -- Table users
 -- -----------------------------------------------------
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
   id serial NOT NULL PRIMARY KEY,
   name VARCHAR(45) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE users
 -- -----------------------------------------------------
 -- Table projects
 -- -----------------------------------------------------
-CREATE TABLE projects
+CREATE TABLE IF NOT EXISTS projects
 (
   id serial NOT NULL primary key,
   title VARCHAR(45) NOT NULL,
@@ -35,13 +35,13 @@ CREATE TABLE projects
     ON UPDATE NO ACTION
 );
 
-CREATE INDEX fk_projects_users_idx on projects(user_id);
+CREATE INDEX IF NOT EXISTS fk_projects_users_idx on projects(user_id);
 
 
 -- -----------------------------------------------------
 -- Table sections
 -- -----------------------------------------------------
-CREATE TABLE sections
+CREATE TABLE IF NOT EXISTS sections
 (
   id serial NOT NULL primary key,
   title VARCHAR(45) NOT NULL,
@@ -57,13 +57,13 @@ CREATE TABLE sections
     ON UPDATE NO ACTION
 );
 
-CREATE INDEX fk_sections_projects1_idx on sections(project_id);
+CREATE INDEX IF NOT EXISTS fk_sections_projects1_idx on sections(project_id);
 
 
 -- -----------------------------------------------------
 -- Table tasks
 -- -----------------------------------------------------
-CREATE TABLE tasks (
+CREATE TABLE IF NOT EXISTS tasks (
   id serial NOT NULL primary key,
   title VARCHAR(45) NOT NULL,
   description VARCHAR(45) NULL,
@@ -85,13 +85,13 @@ CREATE TABLE tasks (
     ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
-CREATE INDEX fk_tasks_sections1_idx on tasks(section_id);
-CREATE INDEX fk_tasks_users1_idx on tasks(assigned_to);
+CREATE INDEX IF NOT EXISTS fk_tasks_sections1_idx on tasks(section_id);
+CREATE INDEX IF NOT EXISTS fk_tasks_users1_idx on tasks(assigned_to);
 
 -- -----------------------------------------------------
 -- Table subtasks
 -- -----------------------------------------------------
-CREATE TABLE subtasks (
+CREATE TABLE IF NOT EXISTS subtasks (
   id serial NOT NULL primary key,
   title VARCHAR(45) NULL,
   done INT NULL DEFAULT 0,
@@ -104,11 +104,11 @@ CREATE TABLE subtasks (
     ON UPDATE NO ACTION
 );
 
-CREATE INDEX fk_subtasks_tasks1_idx on subtasks(task_id);
+CREATE INDEX IF NOT EXISTS fk_subtasks_tasks1_idx on subtasks(task_id);
 -- -----------------------------------------------------
 -- Table messages
 -- -----------------------------------------------------
-CREATE TABLE messages (
+CREATE TABLE IF NOT EXISTS messages (
   id serial NOT NULL primary key,
   message TEXT NOT NULL,
   user_id serial NOT NULL,
@@ -126,13 +126,13 @@ CREATE TABLE messages (
     ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
-CREATE INDEX fk_messages_projects1_idx on messages(project_id);
-CREATE INDEX fk_messages_users1_idx on messages(user_id);
+CREATE INDEX IF NOT EXISTS fk_messages_projects1_idx on messages(project_id);
+CREATE INDEX IF NOT EXISTS fk_messages_users1_idx on messages(user_id);
 
 -- -----------------------------------------------------
 -- Table notes
 -- -----------------------------------------------------
-CREATE TABLE notes (
+CREATE TABLE IF NOT EXISTS notes (
   id serial NOT NULL,
   title VARCHAR(45) NOT NULL,
   description TEXT NOT NULL,
@@ -148,11 +148,11 @@ CREATE TABLE notes (
     ON UPDATE NO ACTION
 );
 
-CREATE INDEX fk_notes_projects1_idx on notes(project_id);
+CREATE INDEX IF NOT EXISTS fk_notes_projects1_idx on notes(project_id);
 -- -----------------------------------------------------
 -- Table files
 -- -----------------------------------------------------
-CREATE TABLE files (
+CREATE TABLE IF NOT EXISTS files (
   id INT NOT NULL,
   title VARCHAR(45) NOT NULL,
   url TEXT NOT NULL,
@@ -168,11 +168,11 @@ CREATE TABLE files (
     ON UPDATE NO ACTION
 );
 
-CREATE INDEX fk_files_projects1_idx on files(project_id);
+CREATE INDEX IF NOT EXISTS fk_files_projects1_idx on files(project_id);
 -- -----------------------------------------------------
 -- Table schedules
 -- -----------------------------------------------------
-CREATE TABLE schedules (
+CREATE TABLE IF NOT EXISTS schedules (
   id serial NOT NULL,
   description TEXT NOT NULL,
   due_date DATE NOT NULL,
@@ -187,5 +187,5 @@ CREATE TABLE schedules (
     ON UPDATE NO ACTION)
 ;
 
-CREATE INDEX fk_schedules_projects1_idx on schedules(user_id);
+CREATE INDEX IF NOT EXISTS fk_schedules_projects1_idx on schedules(user_id);
 
