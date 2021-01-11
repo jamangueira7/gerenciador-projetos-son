@@ -6,16 +6,13 @@ require __DIR__ . '/vendor/autoload.php';
 $c = require __DIR__ . '/app/config/containers.php';
 $c = new Pimple\Container($c);
 
-$c['db'] = function () {
-    $host = 'localhost';
+$c['db'] = function ($c) {
     $db = 'template1 ';
-    $username = 'postgres';
-    $password = 'docker';
-    $dsn = "pgsql:host=$host;port=5432;dbname=$db";
 
-    $options = [
-        \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
-    ];
+    $dsn = $c['settings']['db']['dsn'] . ';dbname=' . $db;
+    $username = $c['settings']['db']['username'];
+    $password = $c['settings']['db']['password'];
+    $options = $c['settings']['db']['options'];
 
     $pdo = new \PDO($dsn, $username, $password, $options);
 
@@ -25,8 +22,7 @@ $c['db'] = function () {
 };
 
 if (!empty($argv[1]) and $argv[1] === 'fresh') {
-
-    $c['db']->exec("DROP DATABASE IF EXISTS pp_project_manager");
+    $c['db']->exec("DROP DATABASE IF EXISTS ". $c['settings']['db']['database']);
 
     echo 'Database dropped' . PHP_EOL;
 }
