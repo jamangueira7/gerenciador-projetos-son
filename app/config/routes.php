@@ -1,6 +1,7 @@
 <?php
 
 $router->add('GET','/', function () {
+    debug('estamos na homepage');
     return 'Estamos na homepage';
 });
 

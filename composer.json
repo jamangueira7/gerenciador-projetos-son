@@ -16,7 +16,10 @@
         "psr-4": {
             "SON\\Framework\\": "src",
             "App\\": "app"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "scripts": {
         "server": "php -S localhost:8080 -t public"
