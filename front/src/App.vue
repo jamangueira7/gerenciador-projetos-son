@@ -1,7 +1,14 @@
 <template>
   <v-app>
-    <img src="./assets/logo.png">
     <e-header/>
+    <v-content>
+      <v-container grid-list-md>
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+    <v-footer app>
+      <span>&copy; <a href="https://www.schoolofnet.com/">School of Net</a> - {{year}}</span>
+    </v-footer>
   </v-app>
 </template>
 
@@ -10,19 +17,14 @@ import Header from './partials/Header';
 
 export default {
   name: 'App',
+  computed: {
+    year() {
+      return (new Date()).getFullYear();
+    }
+  },
   components: {
     'e-header': Header,
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
