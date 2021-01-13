@@ -9,20 +9,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 Vue.config.productionTip = false
 
-const vuetify = new Vuetify({
-  breakpoint: {
-    mobileBreakpoint: 'sm',
-    thresholds: {
-      xs: 340,
-      sm: 540,
-      md: 800,
-      lg: 1280,
-    },
-    scrollBarWidth: 24,
-  },
-})
-
-Vue.use(vuetify);
+Vue.use(Vuetify);
 
 /* eslint-disable no-new */
 new Vue({

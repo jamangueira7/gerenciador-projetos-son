@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <v-app>
     <img src="./assets/logo.png">
     <e-header/>
-  </div>
+  </v-app>
 </template>
 
 <script>
