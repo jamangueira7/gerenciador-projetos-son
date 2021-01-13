@@ -18,21 +18,54 @@
           <v-text-field
             v-model="data.description"
             label="Descrição"
-            textarea
+            outline
           >
           </v-text-field>
+          <v-menu
+            ref="menu"
+            v-model="menu"
+            :close-on-content-click="false"
+            :return-value.sync="data.due_date"
+          >
+              <v-text-field
+                slot="activator"
+                v-model="data.due_date"
+                label="Data de entrega"
+                readonly
+              ></v-text-field>
+              <v-date-picker
+                v-model="data.due_date"
+                no-title
+                scrollable
+              >
+                <v-btn flat color="secundary" @click="menu = false">Cancelar</v-btn>
+                <v-btn flat color="primary" @click="$refs.menu.save(data.due_date)">OK</v-btn>
+              </v-date-picker>
 
-          <v-date-picker
-            v-model="data.due_date"
-            no-title
-            scrollable
+          </v-menu>
+
+          <v-menu
+            ref="menuTime"
+            v-model="menu2"
+            :close-on-content-click="false"
+            :return-value.sync="data.due_time_time"
           >
-          </v-date-picker>
-          <v-time-picker
-            v-model="due_time_time"
-          >
-          </v-time-picker>
-          <v-btn flat>Salvar</v-btn>
+              <v-text-field
+                slot="activator"
+                v-model="data.due_time_time"
+                label="Hora de entrega"
+                readonly
+              ></v-text-field>
+
+              <v-time-picker
+                v-model="due_time_time"
+              >
+                <v-btn flat color="secundary" @click="menu2 = false">Cancelar</v-btn>
+                <v-btn flat color="primary" @click="$refs.menuTime.save(due_time_time)">OK</v-btn>
+              </v-time-picker>
+          </v-menu>
+
+          <v-btn flat @click="submit()">Salvar</v-btn>
         </div>
       </v-form>
     </v-container>
@@ -44,13 +77,21 @@ export default {
   data() {
     return {
       valid: false,
+      menu: false,
+      menu2: false,
       data: {},
-      due_time_time: null,
+      due_time_time: '12:00',
       validation: {
         title: [
           v => !!v || 'Título é obrigatório.'
         ],
       }
+    }
+  },
+  methods: {
+    submit() {
+      this.data.due_date = this.data.due_date + ' ' + this.due_time_time + ':00';
+      console.log(this.data);
     }
   }
 }
