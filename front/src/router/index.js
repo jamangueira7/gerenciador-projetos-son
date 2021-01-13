@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Projects from '@/components/Projects'
-import ProjectList from '@/components/Projects/List'
+import Projects from '@/components/projects'
+import ProjectList from '@/components/projects/List'
 
 Vue.use(Router);
 
