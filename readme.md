@@ -24,6 +24,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - [Docker](https://www.docker.com/) - 19.03.8
 - [Apache](https://www.apache.org/) 2.4.35
+- [Vue](https://vuejs.org/) 2.5.2
+- [Vuetify](https://vuetifyjs.com/en/) 1.1.6
 
 ## 💻 Projeto
 
