@@ -45,7 +45,8 @@ docker run --name postgres -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 - Criar um banco com o nome pp_project_manager.
 - composer server.
 - acesse http://localhost:8080/
-- Entrar na pasta front e executar npm start.
+- Entrar na pasta front e executar npm install.
+- Depois executar npm start.
 
 User o comando para criar ou recriar o banco.
 ```
