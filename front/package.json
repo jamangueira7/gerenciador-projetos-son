@@ -10,7 +10,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "vue": "^2.5.2"
+    "material-design-icons-iconfont": "^6.1.0",
+    "vue": "^2.5.2",
+    "vue-router": "^3.4.9",
+    "vuetify": "^2.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

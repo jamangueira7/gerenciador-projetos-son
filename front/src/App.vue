@@ -1,20 +1,17 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <Home/>
-    <Projects/>
+    <e-header/>
   </div>
 </template>
 
 <script>
-import Home from './components/Home'
-import Projects from './components/Projects'
+import Header from './partials/Header';
 
 export default {
   name: 'App',
   components: {
-    Home,
-    Projects,
+    'e-header': Header,
   }
 }
 </script>
