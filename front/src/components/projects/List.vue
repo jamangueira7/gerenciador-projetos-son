@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap>
-    <v-flex xs3 v-for="n in 9" :key="n">
+    <v-flex xs3 v-for="n in 2" :key="n">
       <v-card color="blue-grey darken-2" class="white--text">
         <v-card-title primary-title>
           <div class="headline">App Mobile SON</div>

@@ -13,7 +13,25 @@
           required
         >
         </v-text-field>
+
         <div v-show="data.title">
+          <v-text-field
+            v-model="data.description"
+            label="Descrição"
+            textarea
+          >
+          </v-text-field>
+
+          <v-date-picker
+            v-model="data.due_date"
+            no-title
+            scrollable
+          >
+          </v-date-picker>
+          <v-time-picker
+            v-model="due_time_time"
+          >
+          </v-time-picker>
           <v-btn flat>Salvar</v-btn>
         </div>
       </v-form>
@@ -27,6 +45,7 @@ export default {
     return {
       valid: false,
       data: {},
+      due_time_time: null,
       validation: {
         title: [
           v => !!v || 'Título é obrigatório.'
