@@ -17,7 +17,19 @@
       </v-card>
     </v-flex>
     <v-flex xs3>
-      //criar uma sessão
+      <create />
     </v-flex>
   </v-layout>
 </template>
+
+
+<script>
+
+import create from './Create';
+
+export default {
+  components: {
+    create
+  }
+}
+</script>
