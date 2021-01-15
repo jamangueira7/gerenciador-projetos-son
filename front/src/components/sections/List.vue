@@ -9,7 +9,7 @@
           adfadfsdf
         </v-card-text>
         <v-card-text>
-          // lista tarefas
+          <tasks />
         </v-card-text>
         <v-card-text>
           // add tarefa
@@ -26,10 +26,12 @@
 <script>
 
 import create from './Create';
+import tasks from '../tasks/List';
 
 export default {
   components: {
-    create
+    create,
+    tasks
   }
 }
 </script>
