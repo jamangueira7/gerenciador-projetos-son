@@ -12,7 +12,7 @@
           <tasks />
         </v-card-text>
         <v-card-text>
-          // add tarefa
+          <create-task />
         </v-card-text>
       </v-card>
     </v-flex>
@@ -27,11 +27,13 @@
 
 import create from './Create';
 import tasks from '../tasks/List';
+import createTasks from '../tasks/Create';
 
 export default {
   components: {
     create,
-    tasks
+    tasks,
+    'create-task': createTasks
   }
 }
 </script>
