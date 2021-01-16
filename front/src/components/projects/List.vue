@@ -31,8 +31,6 @@ export default  {
   components: {
     'projects-create': ProjectCreate,
   },
-  mounted() {
-    this.$store.dispatch('projects/getAll');
-  }
+
 }
 </script>

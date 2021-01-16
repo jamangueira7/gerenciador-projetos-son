@@ -18,7 +18,7 @@ export default {
     }
   },
   mounted() {
-    console.log('estamos prontos para trabalhar');
+    this.$store.dispatch('projects/getAll');
   }
 }
 </script>
