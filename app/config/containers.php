@@ -29,7 +29,6 @@ $container['db'] = function ($container) {
 
     $pdo = new \PDO($dsn, $username, $password, $options);
 
-    var_dump($dsn);
     $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
     return $pdo;

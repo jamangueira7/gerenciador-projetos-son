@@ -2,9 +2,11 @@
 
 namespace SON\Framework\Tasks\Controllers;
 
-class ProjectsController
+use SON\Framework\Controller;
+
+class ProjectsController extends Controller
 {
-    public function index()
+    protected function getModel(): string
     {
         return 'projects_model';
     }

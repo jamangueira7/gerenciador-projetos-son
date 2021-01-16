@@ -25,21 +25,21 @@
             ref="menu"
             v-model="menu"
             :close-on-content-click="false"
-            :return-value.sync="data.due_date"
+            :return-value.sync="due_date"
           >
               <v-text-field
                 slot="activator"
-                v-model="data.due_date"
+                v-model="due_date"
                 label="Data de entrega"
                 readonly
               ></v-text-field>
               <v-date-picker
-                v-model="data.due_date"
+                v-model="due_date"
                 no-title
                 scrollable
               >
                 <v-btn flat color="secundary" @click="menu = false">Cancelar</v-btn>
-                <v-btn flat color="primary" @click="$refs.menu.save(data.due_date)">OK</v-btn>
+                <v-btn flat color="primary" @click="$refs.menu.save(due_date)">OK</v-btn>
               </v-date-picker>
 
           </v-menu>
@@ -48,20 +48,20 @@
             ref="menuTime"
             v-model="menu2"
             :close-on-content-click="false"
-            :return-value.sync="data.due_time_time"
+            :return-value.sync="data.due_date_time"
           >
               <v-text-field
                 slot="activator"
-                v-model="data.due_time_time"
+                v-model="due_date_time"
                 label="Hora de entrega"
                 readonly
               ></v-text-field>
 
               <v-time-picker
-                v-model="due_time_time"
+                v-model="due_date_time"
               >
                 <v-btn flat color="secundary" @click="menu2 = false">Cancelar</v-btn>
-                <v-btn flat color="primary" @click="$refs.menuTime.save(due_time_time)">OK</v-btn>
+                <v-btn flat color="primary" @click="$refs.menuTime.save(due_date_time)">OK</v-btn>
               </v-time-picker>
           </v-menu>
 
@@ -80,7 +80,8 @@ export default {
       menu: false,
       menu2: false,
       data: {},
-      due_time_time: '12:00',
+      due_date: null,
+      due_date_time: '12:00',
       validation: {
         title: [
           v => !!v || 'Título é obrigatório.'
@@ -90,8 +91,9 @@ export default {
   },
   methods: {
     submit() {
-      this.data.due_date = this.data.due_date + ' ' + this.due_time_time + ':00';
-      console.log(this.data);
+      this.data.user_id = 1;
+      this.data.due_date = this.due_date + ' ' + this.due_date_time + ':00';
+      this.$store.dispatch('projects/create', this.data);
     }
   }
 }
