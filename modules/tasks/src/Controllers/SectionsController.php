@@ -4,7 +4,7 @@ namespace SON\Framework\Tasks\Controllers;
 
 use SON\Framework\Controller;
 
-class TasksController extends Controller
+class SectionsController extends Controller
 {
     protected function getModel(): string
     {
