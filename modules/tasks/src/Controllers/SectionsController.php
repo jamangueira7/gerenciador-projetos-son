@@ -8,6 +8,6 @@ class TasksController extends Controller
 {
     protected function getModel(): string
     {
-        return 'tasks_model';
+        return 'sections_model';
     }
 }

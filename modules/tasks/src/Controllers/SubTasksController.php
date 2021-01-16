@@ -4,10 +4,10 @@ namespace SON\Framework\Tasks\Controllers;
 
 use SON\Framework\Controller;
 
-class TasksController extends Controller
+class SubTasksController extends Controller
 {
     protected function getModel(): string
     {
-        return 'tasks_model';
+        return 'subtasks_model';
     }
 }
