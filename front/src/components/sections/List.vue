@@ -9,10 +9,10 @@
           {{ section.description }}
         </v-card-text>
         <v-card-text>
-          <tasks />
+          <tasks :section="section.id" />
         </v-card-text>
         <v-card-text>
-          <create-task />
+          <create-task :section="section.id" />
         </v-card-text>
       </v-card>
     </v-flex>
