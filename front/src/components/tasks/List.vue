@@ -16,10 +16,12 @@
 
 
 <script>
+import { eventHub } from "../../eventHub";
+
 export default {
   methods: {
     open(n) {
-      console.log(n);
+      eventHub.$emit('open-task', n);
     }
   }
 }

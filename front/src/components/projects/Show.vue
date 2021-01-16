@@ -11,16 +11,20 @@
     <v-flex xs12>
       <v-btn to="/projects">Voltar</v-btn>
     </v-flex>
+
+    <show-task />
   </v-layout>
 </template>
 
 <script>
 
 import sections from '../sections/List';
+import showTask from '../tasks/Show';
 
 export default {
   components: {
-    sections
+    sections,
+    'show-task' : showTask
   }
 }
 </script>
