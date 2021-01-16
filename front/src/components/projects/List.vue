@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap>
-    <v-flex xs3 v-for="n in 2" :key="n">
+    <v-flex xs3 v-for="project in projects" :key="n">
       <v-card color="blue-grey darken-2" class="white--text">
         <v-card-title primary-title>
           <div class="headline">App Mobile SON</div>
@@ -23,6 +23,11 @@
 import ProjectCreate from './Create';
 
 export default  {
+  computed: {
+    projects() {
+      return this.$store.state.projects.all;
+    }
+  },
   components: {
     'projects-create': ProjectCreate,
   }
