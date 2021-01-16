@@ -30,10 +30,18 @@ import tasks from '../tasks/List';
 import createTasks from '../tasks/Create';
 
 export default {
+  computed: {
+    sections() {
+      return this.$store.state.sections.all;
+    }
+  },
   components: {
     create,
     tasks,
     'create-task': createTasks
+  },
+  mounted() {
+    this.$store.dispatch('sections/getAll');
   }
 }
 </script>
