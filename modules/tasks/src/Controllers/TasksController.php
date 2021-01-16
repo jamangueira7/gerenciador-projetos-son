@@ -10,4 +10,11 @@ class TasksController extends Controller
     {
         return 'tasks_model';
     }
+
+    public function listByProject($c, $request)
+    {
+        $id = $request->query->get('id');
+
+        return $c['tasks_model']->all(['select_id' => $id]);
+    }
 }

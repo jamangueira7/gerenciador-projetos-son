@@ -3,7 +3,7 @@
     <v-subheader>Tarefas</v-subheader>
     <v-divider></v-divider>
     <div v-for="task in tasks" :key="task.id">
-      <v-list-tile @click="open(task)">
+      <v-list-tile @click="open(task.id)">
         <v-list-tile-content>
           <v-list-tile-title>{{ task.title }} </v-list-tile-title>
           <v-list-tile-sub-title>{{ task.description }}</v-list-tile-sub-title>
@@ -33,7 +33,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('tasks/getAll');
+    this.$store.dispatch('tasks/getAll', this.$route.params.id);
   }
 }
 </script>
