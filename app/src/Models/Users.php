@@ -6,5 +6,13 @@ use \SON\Framework\Model;
 
 class Users extends Model
 {
+    public function setPassword($password)
+    {
 
+    }
+
+    public function getByEmail($email)
+    {
+
+    }
 }
