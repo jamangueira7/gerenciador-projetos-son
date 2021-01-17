@@ -7,11 +7,6 @@ use Firebase\JWT\JWT;
 
 class UserController
 {
-    protected function getModel() : string
-    {
-        return 'users_model';
-    }
-
     public function register($container, $request)
     {
         return $container['users_model']->create($request->request->all());
