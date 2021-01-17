@@ -10,7 +10,15 @@ $app->addMiddleware('before', function ($c) {
 });
 
 $app->addMiddleware('before', function ($c) {
-    //proteção das rotas da API
+    if (!preg_match('/^\/api\/*./', $c['router']->getCurrentUrl())) {
+        return;
+    }
+
+    $data = (new \App\Controllers\UserController)->getCurrentUser($c);
+
+    $c['loggedUser'] = function () use ($data) {
+        return $data;
+    };
 });
 
 /*
