@@ -15,6 +15,6 @@ class TasksController extends Controller
     {
         $id = $request->query->get('id');
 
-        return $c['tasks_model']->all(['section_id' => $id]);
+        return $c['tasks_model']->getByProjectID($id);
     }
 }

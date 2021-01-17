@@ -17,6 +17,7 @@
 
 <script>
 import { eventHub } from "../../eventHub";
+import _ from 'underscore';
 
 export default {
   props: [
@@ -24,7 +25,10 @@ export default {
   ],
   computed: {
     tasks() {
-      return this.$store.state.tasks.all;
+      const tasks = _.filter(this.$store.state.tasks.all, (data) => {
+        return data.section_id == this.section;
+      })
+      return tasks;
     }
   },
   methods: {
