@@ -20,16 +20,16 @@ class UserController
         $user = $container['users_model']->getByEmail($email);
 
         if(!$user) {
-            throw  new HttpException("Fobindden", 401);
+            throw new HttpException("Fobindden", 401);
         }
 
         if(!password_verify($password, $user['password'])) {
-            throw  new HttpException("Fobindden", 401);
+            throw new HttpException("Fobindden", 401);
         }
 
         unset($user['password']);
 
-        $key = '';
+        $key = 'SECRET KEY';
         $data = [
             'iat' => time(),
             'exp' => time() + (60 * 60 * 24),
@@ -41,8 +41,26 @@ class UserController
         return ['token' => $token];
     }
 
-    public function getCurrentUser($container, $request)
+    public function getCurrentUser($container)
     {
-        return $container['users_model']->create($request->request->all());
+        $token = getallheaders()['Authorization'] ?? null;
+
+        if (!$token) {
+            $token = filter_input((\INPUT_GET), 'token');
+        }
+
+        if (!$token) {
+            throw new HttpException("Fobindden", 401);
+        }
+
+        try {
+            $key = 'SECRET KEY';
+            $data = JWT::decode($token, $key, ['HS256']);
+        } catch (\Exception $e) {
+            throw new HttpException("Fobindden", 401);
+        }
+
+
+        return (array)$data;
     }
 }
