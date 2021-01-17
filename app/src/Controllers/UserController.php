@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
-use SON\Framework\Controller;
+use SON\Framework\Exceptions\HttpException;
+use Firebase\JWT\JWT;
 
-class UserController extends Controller
+class UserController
 {
     protected function getModel() : string
     {
@@ -18,7 +19,31 @@ class UserController extends Controller
 
     public function getToken($container, $request)
     {
-        return $container['users_model']->create($request->request->all());
+        $email = $request->request->get('email');
+        $password = $request->request->get('password');
+
+        $user = $container['users_model']->getByEmail($email);
+
+        if(!$user) {
+            throw  new HttpException("Fobindden", 401);
+        }
+
+        if(!password_verify($password, $user['password'])) {
+            throw  new HttpException("Fobindden", 401);
+        }
+
+        unset($user['password']);
+
+        $key = '';
+        $data = [
+            'iat' => time(),
+            'exp' => time() + (60 * 60 * 24),
+            'user' => $user,
+        ];
+
+        $token = JWT::encode($data, $key);
+
+        return ['token' => $token];
     }
 
     public function getCurrentUser($container, $request)
