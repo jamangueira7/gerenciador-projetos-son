@@ -92,7 +92,7 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('projects/getAll');
+    this.$store.dispatch('schedules/getAll');
   }
 }
 </script>

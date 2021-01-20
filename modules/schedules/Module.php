@@ -1,6 +1,6 @@
 <?php
 
-namespace SON\Framework\Tasks;
+namespace SON\Framework\Schedules;
 
 use SON\Framework\Modules\IContract;
 

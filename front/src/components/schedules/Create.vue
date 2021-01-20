@@ -53,6 +53,10 @@ export default {
   methods: {
     submit() {
       this.data.due_date = this.date + ' ' + this.due_date_time + ':00';
+      this.$store.dispatch('schedules/create', this.data).then(() => {
+        this.$refs.form.reset();
+        this.due_date_time = null;
+      });
     }
   }
 }
