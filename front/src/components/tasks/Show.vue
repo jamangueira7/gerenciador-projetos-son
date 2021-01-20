@@ -15,6 +15,38 @@
         <p v-if="task.description">{{ task.description }}</p>
         <p v-if="task.due_date">{{ task.due_date }}</p>
         <p >{{ task.done == 1 ? 'tarefa finalizada' : 'tarefa pendente' }}</p>
+
+        <v-list three-line>
+          <v-subheader>Checklist</v-subheader>
+          <v-divider></v-divider>
+          <div v-for="n in 5" :key="n">
+            <v-list-tile @click>
+              <v-list-tile-action>
+                <v-icon color="green">done</v-icon>
+              </v-list-tile-action>
+              <v-list-tile-content>
+                <v-list-tile-title>Item {{n}}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+            <v-divider></v-divider>
+          </div>
+
+          <v-list-tile>
+            <v-form v-model="valid" @submit.prevent ref="form">
+              <v-text-field
+                label="Novo item"
+                v-model="data.title"
+                :rules="validation.title"
+                required
+                @keyup.native.enter="submit()"
+              >
+
+              </v-text-field>
+            </v-form>
+          </v-list-tile>
+        </v-list>
+
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -29,6 +61,18 @@ export default {
     return {
       dialog: false,
       task: {},
+      data: {},
+      valid: false,
+      validation: {
+        title: [
+          v => !!v || "Título é obrigatório"
+        ]
+      }
+    }
+  },
+  methods: {
+    submit() {
+      console.log(this.data);
     }
   },
   created() {
