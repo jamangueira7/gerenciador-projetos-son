@@ -17,16 +17,34 @@
       <v-btn dark @click="goToToday()">Ir para hoje</v-btn>
     </v-flex>
     <v-flex xs6>
-      <h2 class="display-1 mb-2">Agenda</h2>
+      <v-card color="green lighten-5" v-if="date">
+        <v-card-title primary-title class="green white--text">
+          <div class="headline">{{ date }}</div>
+        </v-card-title>
+        <v-card-text>
+          <p>Total de eventos: {{ today.length }}</p>
+
+          <v-list>
+            <v-list-tile v-for="event, index in today" :key="index">
+              <v-list-tile-content>
+                <v-list-tile-title>{{ event }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-card-text>
+      </v-card>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import _ from 'underscore';
+
 export default {
   data() {
     return {
-      date: null
+      date: null,
+      today: []
     }
   },
   computed: {
@@ -37,6 +55,15 @@ export default {
         date.setDate(day);
         return date.toISOString().substr(0,10);
       });
+    }
+  },
+  watch: {
+    date: function (to, from) {
+      const events = _.filter(this.events, (item) => {
+        return item == to;
+      });
+
+      this.today = events;
     }
   },
   methods: {
