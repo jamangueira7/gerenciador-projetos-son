@@ -1,7 +1,11 @@
 <?php
 
 $container['projects_model'] = function ($c) {
-    return new SON\Framework\Tasks\Models\Projects($c);
+    $id = $c['loggedUser']['user']->id;
+    $projects = new SON\Framework\Tasks\Models\Projects($c);
+    $projects->user_id = $id;
+
+    return $projects;
 };
 
 $container['tasks_model'] = function ($c) {
