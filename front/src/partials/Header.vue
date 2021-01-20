@@ -14,7 +14,7 @@
           </v-list-tile-content>
         </v-list-tile>
 
-        <v-list-tile @click="">
+        <v-list-tile to="/schedules">
           <v-list-tile-action>
             <v-icon>schedule</v-icon>
           </v-list-tile-action>
