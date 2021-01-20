@@ -19,13 +19,13 @@
         <v-list three-line>
           <v-subheader>Checklist</v-subheader>
           <v-divider></v-divider>
-          <div v-for="n in 5" :key="n">
+          <div v-for="subtask in subtasks" :key="subtask.id">
             <v-list-tile @click>
               <v-list-tile-action>
                 <v-icon color="green">done</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
-                <v-list-tile-title>Item {{n}}</v-list-tile-title>
+                <v-list-tile-title>{{ subtask.title }}</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
 
@@ -70,15 +70,24 @@ export default {
       }
     }
   },
+  computed: {
+    subtasks() {
+      return this.$store.state.subtasks.all;
+    }
+  },
   methods: {
     submit() {
-      console.log(this.data);
+      this.data.task_id = this.task.id;
+      this.$store.dispatch('subtasks/create', this.data).then(() => {
+        this.$refs.form.reset();
+      });
     }
   },
   created() {
     eventHub.$on('open-task', (task) => {
         this.dialog = true;
         this.task = task;
+      this.$store.dispatch('subtasks/getAll');
     })
   }
 }
