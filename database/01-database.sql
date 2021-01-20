@@ -10,8 +10,8 @@ CREATE TABLE IF NOT EXISTS users
   name VARCHAR(45) NOT NULL,
   email VARCHAR(250) NOT NULL,
   password VARCHAR(100) NOT NULL,
-  created DATE NULL,
-  modified DATE NULL
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL
 );
 
 
@@ -24,10 +24,10 @@ CREATE TABLE IF NOT EXISTS projects
   title VARCHAR(45) NOT NULL,
   description TEXT NULL,
   user_id serial NOT NULL,
-  due_date DATE NULL,
+  due_date TIMESTAMP NULL,
   done INT NOT NULL DEFAULT 0,
-  created DATE NULL,
-  modified DATE NULL,
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL,
   CONSTRAINT fk_projects_users
     FOREIGN KEY (user_id)
     REFERENCES users (id)
@@ -47,8 +47,8 @@ CREATE TABLE IF NOT EXISTS sections
   title VARCHAR(45) NOT NULL,
   description TEXT NULL,
   project_id serial NOT NULL,
-  created DATE NULL,
-  modified DATE NULL,
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL,
   user_id serial NOT NULL,
   CONSTRAINT fk_sections_projects1
     FOREIGN KEY (project_id)
@@ -68,11 +68,11 @@ CREATE TABLE IF NOT EXISTS tasks (
   title VARCHAR(45) NOT NULL,
   description VARCHAR(45) NULL,
   done INT NOT NULL DEFAULT 0,
-  due_date DATE NULL,
+  due_date TIMESTAMP NULL,
   assigned_to serial NOT NULL,
   section_id serial NOT NULL,
-  created DATE NULL,
-  modified DATE NULL,
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL,
   user_id serial NOT NULL,
   CONSTRAINT fk_tasks_sections1
     FOREIGN KEY (section_id)
@@ -113,8 +113,8 @@ CREATE TABLE IF NOT EXISTS messages (
   message TEXT NOT NULL,
   user_id serial NOT NULL,
   project_id serial NOT NULL,
-  created DATE NULL,
-  modified DATE NULL,
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL,
   CONSTRAINT fk_messages_projects1
     FOREIGN KEY (project_id)
     REFERENCES projects (id)
@@ -137,8 +137,8 @@ CREATE TABLE IF NOT EXISTS notes (
   title VARCHAR(45) NOT NULL,
   description TEXT NOT NULL,
   project_id serial NOT NULL,
-  created DATE NULL,
-  modified DATE NULL,
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL,
   user_id serial NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_notes_projects1
@@ -157,8 +157,8 @@ CREATE TABLE IF NOT EXISTS files (
   title VARCHAR(45) NOT NULL,
   url TEXT NOT NULL,
   project_id serial NOT NULL,
-  created DATE NULL,
-  modified DATE NULL,
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL,
   user_id serial NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_files_projects1
@@ -177,8 +177,8 @@ CREATE TABLE IF NOT EXISTS schedules (
   description TEXT NOT NULL,
   due_date DATE NOT NULL,
   user_id serial NOT NULL,
-  created DATE NULL,
-  modified DATE NULL,
+  created TIMESTAMP NULL,
+  modified TIMESTAMP NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_schedules_projects1
     FOREIGN KEY (user_id)
