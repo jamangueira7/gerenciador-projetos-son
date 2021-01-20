@@ -15,6 +15,17 @@
       ></v-date-picker>
 
       <v-btn dark @click="goToToday()">Ir para hoje</v-btn>
+
+      <v-card class="mt-4" v-if="date">
+        <v-card-title>
+          <div class="headline">Novo evento</div>
+        </v-card-title>
+
+        <v-card-text>
+          <create :date="date" />
+        </v-card-text>
+
+      </v-card>
     </v-flex>
     <v-flex xs6>
       <v-card color="green lighten-5" v-if="date">
@@ -39,8 +50,12 @@
 
 <script>
 import _ from 'underscore';
+import create from './schedules/Create';
 
 export default {
+  components: {
+    create
+  },
   data() {
     return {
       date: null,
