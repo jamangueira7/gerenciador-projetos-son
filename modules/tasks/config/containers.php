@@ -9,13 +9,25 @@ $container['projects_model'] = function ($c) {
 };
 
 $container['tasks_model'] = function ($c) {
-    return new SON\Framework\Tasks\Models\Tasks($c);
+    $id = $c['loggedUser']['user']->id;
+    $tasks = new SON\Framework\Tasks\Models\Tasks($c);
+    $tasks->user_id = $id;
+
+    return $tasks;
 };
 
 $container['sections_model'] = function ($c) {
-    return new SON\Framework\Tasks\Models\Sections($c);
+    $id = $c['loggedUser']['user']->id;
+    $section = new SON\Framework\Tasks\Models\Sections($c);
+    $section->user_id = $id;
+
+    return $section;
 };
 
 $container['subtasks_model'] = function ($c) {
-    return new SON\Framework\Tasks\Models\SubTasks($c);
+    $id = $c['loggedUser']['user']->id;
+    $subtasks = new SON\Framework\Tasks\Models\SubTasks($c);
+    $subtasks->user_id = $id;
+
+    return $subtasks;
 };
