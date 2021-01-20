@@ -11,3 +11,4 @@ $router->add('POST','/api/tasks', 'SON\Framework\Tasks\Controllers\TasksControll
 
 $router->add('GET','/api/subtasks', 'SON\Framework\Tasks\Controllers\SubTasksController::listByTask');
 $router->add('POST','/api/subtasks', 'SON\Framework\Tasks\Controllers\SubTasksController::create');
+$router->add('PUT','/api/subtasks/(\d+)', 'SON\Framework\Tasks\Controllers\SubTasksController::update');

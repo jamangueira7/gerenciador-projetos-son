@@ -20,9 +20,9 @@
           <v-subheader>Checklist</v-subheader>
           <v-divider></v-divider>
           <div v-for="subtask in subtasks" :key="subtask.id">
-            <v-list-tile @click>
+            <v-list-tile @click="checked(subtask)">
               <v-list-tile-action>
-                <v-icon color="green">done</v-icon>
+                <v-icon v-if="subtask.done == 1" color="green">done</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
                 <v-list-tile-title>{{ subtask.title }}</v-list-tile-title>
@@ -81,6 +81,9 @@ export default {
       this.$store.dispatch('subtasks/create', this.data).then(() => {
         this.$refs.form.reset();
       });
+    },
+    checked(subtask) {
+      this.$store.dispatch('subtasks/checked', subtask);
     }
   },
   created() {
