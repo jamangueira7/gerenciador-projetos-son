@@ -1,0 +1,5 @@
+import axios from 'axios';
+
+window.axios = axios;
+
+window.axios.defaults.headers.common['Authorization'] = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTExMDI4MDksImV4cCI6MTYxMTE4OTIwOSwidXNlciI6eyJpZCI6MywibmFtZSI6IkpvXHUwMGUzbyBNYW5ndWVpcmEiLCJlbWFpbCI6ImpvYW9Aam9hby5jb20iLCJjcmVhdGVkIjpudWxsLCJtb2RpZmllZCI6bnVsbH19.AlpVkoQir_qbNoUZTYEVrgN51NJxCvEealS0WOjHL5w';
