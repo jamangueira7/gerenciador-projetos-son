@@ -10,4 +10,10 @@ class SubTasksController extends Controller
     {
         return 'subtasks_model';
     }
+
+    public function listByTask($c, $request)
+    {
+        $id = $request->query->get('id');
+        return $c['subtasks_model']->all(['task_id' => $id]);
+    }
 }

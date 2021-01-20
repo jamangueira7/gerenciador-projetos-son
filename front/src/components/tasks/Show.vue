@@ -87,8 +87,8 @@ export default {
     eventHub.$on('open-task', (task) => {
         this.dialog = true;
         this.task = task;
-      this.$store.dispatch('subtasks/getAll');
-    })
+        this.$store.dispatch('subtasks/getAll', this.task.id);
+    });
   }
 }
 </script>
