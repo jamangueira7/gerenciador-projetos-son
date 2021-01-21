@@ -2,7 +2,7 @@
 
 $container['projects_model'] = function ($c) {
     $id = $c['loggedUser']['user']->id;
-    $projects = new SON\Framework\Tasks\Models\Schedules($c);
+    $projects = new SON\Framework\Tasks\Models\Projects($c);
     $projects->user_id = $id;
 
     return $projects;

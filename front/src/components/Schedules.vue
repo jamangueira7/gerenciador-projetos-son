@@ -53,7 +53,7 @@
 
 <script>
 import _ from 'underscore';
-import { eventHub } from '../../eventHub';
+import { eventHub } from '../eventHub';
 import create from './schedules/Create';
 
 export default {
