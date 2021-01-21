@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     isLogged() {
-      return true;
+      return this.$store.state.auth.isLogged;
     }
   }
 }

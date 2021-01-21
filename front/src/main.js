@@ -13,8 +13,6 @@ Vue.config.productionTip = false
 
 Vue.use(Vuetify);
 
-//eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MTA4OTAzNTcsImV4cCI6MTYxMDk3Njc1NywidXNlciI6eyJpZCI6MywibmFtZSI6IkpvXHUwMGUzbyBNYW5ndWVpcmEiLCJlbWFpbCI6ImpvYW9Aam9hby5jb20iLCJjcmVhdGVkIjpudWxsLCJtb2RpZmllZCI6bnVsbH19.yVExZu_qSLaJOZeYGBSejH2jh0TSh7cJwrW-mk-p48U
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
